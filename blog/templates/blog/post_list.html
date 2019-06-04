@@ -1,38 +1,16 @@
-{% load staticfiles %}
+{% extends 'blog/base.html' %}
 
+{% block content %}
 
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog Palmeiras</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
-</head>
-<body>
-
-<div class="page-header">
-    <h1><a href="/">Blog Palmeiras</a> </h1>
-</div>
--
-<div class="content container">
-    <div class="row">
-        <div class="col-md-8">
-            {% for post in posts %}
-                <div class="post">
-                    <div class="date">
-                        <p>published:{{ post.published_date}}</p>
-                    </div>
-                    <h1><a href="{% url 'post_detail' pk=post.pk %}"> {{ post.title }} </a></h1>
-                    <p> {{ post.text }} </p>
-                </div>
-            {% endfor %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                <p>published:{{ post.published_date}}</p>
+            </div>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}"> {{ post.title }} </a></h1>
+            <p> {{ post.text }} </p>
         </div>
-    <div/>
-</div>
+    {% endfor %}
 
-</body>
-</html>
+{% endblock %}
+
